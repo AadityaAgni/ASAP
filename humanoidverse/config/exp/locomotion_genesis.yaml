@@ -1,0 +1,7 @@
+# @package _global_
+
+defaults:
+  - /algo: ppo
+  - /env: locomotion_genesis
+
+experiment_name: TEST_Locomotion
