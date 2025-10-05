@@ -20,7 +20,7 @@ python3 humanoidverse/train_agent.py \
 +robot=g1/g1_29dof_anneal_23dof.yaml \
 +terrain=terrain_locomotion_plane \
 +obs=loco/leggedloco_obs_singlestep_withlinvel \
-num_envs=4096 \
+num_envs=256 \
 project_name=HumanoidLocomotion \
 experiment_name=H110dof_loco_Genesis \
 headless=True \

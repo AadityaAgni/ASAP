@@ -1,0 +1,51 @@
+# @package _global_
+
+# Env structure
+simulator:
+  _target_: humanoidverse.simulator.crosssim.CrossSim
+  _recursive_: False
+  simulator_names: ["isaacgym", "genesis"]
+  simulator_ratios: [0.5, 0.5]  # Ratio of environments in each simulator, must sum to 1.0
+  sim_configs:
+    isaacgym:
+        name: "isaacgym"
+        port: 5555
+        terrain: ${terrain}
+        plane:
+            static_friction: 1.0
+            dynamic_friction: 1.0
+            restitution: 0.0
+        sim:
+          fps: 200
+          control_decimation: 4
+          substeps: 1
+          render_mode: "human" # [None, "human", "rgb_array"]
+          render_interval: 1
+        
+        scene:
+          num_envs: ${num_envs}
+          env_spacing: ${env.config.env_spacing}
+          replicate_physics: True
+    genesis:
+      name: "genesis"
+      port: 5556
+      terrain: ${terrain}
+      plane:
+          static_friction: 1.0
+          dynamic_friction: 1.0
+          restitution: 0.0
+      sim:
+        fps: 200
+        control_decimation: 4
+        substeps: 1
+        physx:
+          num_threads: 4
+          solver_type: 1 # 0: pgs, 1: tgs
+          num_position_iterations: 4
+          num_velocity_iterations: 0
+          contact_offset: 0.01
+          rest_offset: 0.0
+          bounce_threshold_velocity: 0.5
+          max_depenetration_velocity: 1.0
+          default_buffer_size_multiplier: 5
+          contact_collection: 2
